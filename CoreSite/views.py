@@ -7,4 +7,4 @@ def home_page(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
 
-    return render(request, '')
+    return render(request, 'CoreSite/Home.html')
