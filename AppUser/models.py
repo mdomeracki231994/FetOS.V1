@@ -41,3 +41,12 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     objects = AppUserManager()
+
+
+class UserAddress(models.Model):
+    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+    address_line_one = models.CharField(max_length=255)
+    address_line_two = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    zip = models.CharField(max_length=50)
