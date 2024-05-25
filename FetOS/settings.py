@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'AppUser',
     'CoreSite',
     'UserDashboard',
+    'producer',
 ]
 
 MIDDLEWARE = [

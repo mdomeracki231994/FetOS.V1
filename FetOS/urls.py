@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('CoreSite.urls')),
     path('auth/', include('AppUser.urls')),
     path('user_dashboard/', include('UserDashboard.urls')),
+    path('producer/', include('producer.urls')),
 ]
