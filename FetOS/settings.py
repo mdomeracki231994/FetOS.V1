@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'CoreSite',
     'UserDashboard',
     'producer',
+    'fetos_jobs',
     'Talent',
 ]
 
