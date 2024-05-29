@@ -27,7 +27,7 @@ def create(request):
         dribbble_url = request.POST.get('dribbble')
         instagram_url = request.POST.get('instagram')
         personal_website = request.POST.get('personal-website')
-    sex = Talent.SEX
+    sex = AppUser.SEX
     user_type = AppUser.USER_TYPE_CHOICES
     context = {
         'sex': sex,
