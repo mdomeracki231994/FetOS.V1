@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.11 (FetOS)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.11 (FetOS)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (FetOS.V1)" project-jdk-type="Python SDK" />
 </project>

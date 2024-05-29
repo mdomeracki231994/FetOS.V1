@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'UserDashboard',
     'producer',
     'fetos_jobs',
+    'Talent',
 ]
 
 MIDDLEWARE = [
