@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model, authenticate, login
+from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.shortcuts import render, redirect
 
 from AppUser.models import AppUser
@@ -22,6 +22,8 @@ def register_user(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
+            if user.user_type == "Producer":
+                return redirect('create_producer')
             return redirect('home')
 
     user_type_choices = AppUser.USER_TYPE_CHOICES
@@ -32,3 +34,9 @@ def login_user(request):
     if request.method == "POST":
         pass
     return render(request, 'Auth/Login.html')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')
+
