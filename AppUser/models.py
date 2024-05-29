@@ -53,13 +53,20 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
         ('producer', 'Producer'),
         ('talent', 'Talent'),
     )
-
+    SEX_CHOICES = (
+        ('female', 'Female'),
+        ('male', 'Male'),
+        ('trans_male', 'Trans Male'),
+        ('trans_female', 'Trans Female'),
+        ('non_binary', 'Non-Binary'),
+    )
     user_id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=50, unique=True)
     username = models.CharField(max_length=50, null=True, blank=True)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
     date_of_birth = models.DateField(null=True, blank=True)
+    sex = models.CharField(max_length=20, choices=SEX_CHOICES, null=True, blank=True)
     phone_number = models.CharField(max_length=55, null=True, blank=True)
     user_bio = models.TextField(null=True, blank=True)
     user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES, null=True, blank=True)
