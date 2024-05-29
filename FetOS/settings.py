@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'CoreSite',
     'UserDashboard',
     'producer',
+    'Talent',
 ]
 
 MIDDLEWARE = [
