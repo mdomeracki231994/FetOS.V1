@@ -12,6 +12,7 @@ def register_user(request):
         user_type = request.POST.get('user_type')
 
         if password != password2:
+            print("Passwords do not match")
             pass  # TODO Need to flash a message.
         get_user_model().objects.create_user(
             email=email,
@@ -32,11 +33,17 @@ def register_user(request):
 
 def login_user(request):
     if request.method == "POST":
-        pass
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        user = authenticate(request, email=email, password=password)
+        if user:
+            login(user)
+            return redirect('home')
+        else:
+            print('User Does not exist')  # TODO We need to flash message
     return render(request, 'Auth/Login.html')
 
 
 def logout_user(request):
     logout(request)
     return redirect('home')
-

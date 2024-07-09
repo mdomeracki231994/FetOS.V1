@@ -10,8 +10,17 @@
     {% compress css %}
         <link rel="stylesheet" href="{% static 'src/output.css' %}">
     {% endcompress %}
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
+<!-- myapp/templates/myapp/form_template.html -->
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 {% include 'includes/nav.html' %}
 {% block content %}
 {% endblock content %}
