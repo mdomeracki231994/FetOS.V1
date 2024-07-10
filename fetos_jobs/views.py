@@ -59,4 +59,4 @@ def create_success(request):
 
 
 def all_jobs(request):
-    return render(request, 'fetos_jobs/all_jobs.html')
+    return render(request, 'fetos_jobs/job_board.html')
