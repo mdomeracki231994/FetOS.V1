@@ -37,7 +37,7 @@ def login_user(request):
         password = request.POST.get('password')
         user = authenticate(request, email=email, password=password)
         if user:
-            login(user)
+            login(request, user=user)
             return redirect('home')
         else:
             print('User Does not exist')  # TODO We need to flash message
