@@ -27,8 +27,7 @@ def register_user(request):
                 return redirect('create_producer')
             return redirect('home')
 
-    user_type_choices = AppUser.USER_TYPE_CHOICES
-    return render(request, 'Auth/Register.html', {'user_type_choices': user_type_choices})
+    return render(request, 'Auth/Register.html')
 
 
 def login_user(request):
