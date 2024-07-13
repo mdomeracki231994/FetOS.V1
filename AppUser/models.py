@@ -49,10 +49,6 @@ class AppUserManager(BaseUserManager):
 
 
 class AppUser(AbstractBaseUser, PermissionsMixin):
-    USER_TYPE_CHOICES = (
-        ('producer', 'Producer'),
-        ('talent', 'Talent'),
-    )
     SEX_CHOICES = (
         ('female', 'Female'),
         ('male', 'Male'),
@@ -69,9 +65,11 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     sex = models.CharField(max_length=20, choices=SEX_CHOICES, null=True, blank=True)
     phone_number = models.CharField(max_length=55, null=True, blank=True)
     user_bio = models.TextField(null=True, blank=True)
-    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES, null=True, blank=True)
+    is_talent = models.BooleanField(default=False)
+    is_producer = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
-    is_verified = models.BooleanField(default=False)
+    is_verified_as_talent = models.BooleanField(default=False)
+    is_verified_as_producer = models.BooleanField(default=False)
     date_joined = models.DateField(auto_now_add=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

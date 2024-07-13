@@ -347,24 +347,28 @@
                     <div class="py-3 px-4">
             <span
                     class="block text-sm font-semibold text-gray-900 dark:text-white"
-            >Neil Sims</span
+            >{{ request.user.first_name }} {{ request.user.last_name }}</span
             >
                         <span
                                 class="block text-sm text-gray-900 truncate dark:text-white"
-                        >name@flowbite.com</span
+                        >{{ request.user.email }}</span
                         >
                     </div>
                     <ul
                             class="py-1 text-gray-700 dark:text-gray-300"
                             aria-labelledby="dropdown"
                     >
-                        <li>
-                            <a
-                                    href="#"
-                                    class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
-                            >My profile</a
-                            >
-                        </li>
+                        {% if request.user.is_talent and request.user.is_verified_as_talent %}
+                            <li>
+                                <a
+                                        href="{% url 'update_talent' %}"
+                                        class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                                >My profile</a
+                                >
+                            </li>
+                        {% endif %}
+
+
                         <li>
                             <a
                                     href="#"
@@ -378,41 +382,20 @@
                             aria-labelledby="dropdown"
                     >
                         <li>
+
                             <a
                                     href="#"
                                     class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                             >
-                                <svg
-                                        class="mr-2 w-5 h-5 text-gray-400"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                            fill-rule="evenodd"
-                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                            clip-rule="evenodd"
-                                    ></path>
+                                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                     viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                          d="M3 5.983C3 4.888 3.895 4 5 4h14c1.105 0 2 .888 2 1.983v8.923a1.992 1.992 0 0 1-2 1.983h-6.6l-2.867 2.7c-.955.899-2.533.228-2.533-1.08v-1.62H5c-1.105 0-2-.888-2-1.983V5.983Zm5.706 3.809a1 1 0 1 0-1.412 1.417 1 1 0 1 0 1.412-1.417Zm2.585.002a1 1 0 1 1 .003 1.414 1 1 0 0 1-.003-1.414Zm5.415-.002a1 1 0 1 0-1.412 1.417 1 1 0 1 0 1.412-1.417Z"
+                                          clip-rule="evenodd"/>
                                 </svg>
-                                My likes</a
-                            >
-                        </li>
-                        <li>
-                            <a
-                                    href="#"
-                                    class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                                <svg
-                                        class="mr-2 w-5 h-5 text-gray-400"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                            d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"
-                                    ></path>
-                                </svg>
-                                Collections</a
+
+                                My Messages</a
                             >
                         </li>
                         <li>
@@ -420,35 +403,8 @@
                                     href="#"
                                     class="flex justify-between items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                             >
-                <span class="flex items-center">
-                  <svg
-                          aria-hidden="true"
-                          class="mr-2 w-5 h-5 text-primary-600 dark:text-primary-500"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                            fill-rule="evenodd"
-                            d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
-                            clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                  Pro version
-                </span>
-                                <svg
-                                        aria-hidden="true"
-                                        class="w-5 h-5 text-gray-400"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                            fill-rule="evenodd"
-                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                            clip-rule="evenodd"
-                                    ></path>
-                                </svg>
+
+
                             </a>
                         </li>
                     </ul>
@@ -487,272 +443,6 @@
                                 clip-rule="evenodd"></path>
                     </svg>
                 </button>
-            </div>
-        </div>
-    </nav>
-
-    <nav class="bg-gray-50 dark:bg-gray-700">
-        <div
-                class="flex flex-wrap justify-between items-center py-3 px-4 pb-5 md:pb-3">
-            <div class="flex items-center mb-2 md:mb-0">
-                <button
-                        id="dropdownUserNameButton"
-                        data-dropdown-toggle="dropdownUserName"
-                        data-dropdown-placement="bottom"
-                        class="flex justify-between items-center p-2 rounded-lg dark:bg-gray-700 dark:hover:bg-gray-800 hover:bg-gray-100 dark:hover-bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
-                        type="button">
-                    <span class="sr-only">Open user menu</span>
-                    <div class="flex items-center mr-2">
-                        <img
-                                src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                                class="mr-2 w-7 h-7 rounded-full"
-                                alt="Bonnie avatar"
-                        />
-                        <div class="text-left">
-                            <div
-                                    class="text-sm font-semibold leading-none text-gray-900 dark:text-white">
-                                Producer Mode  <!-- TODO Add the ability to toggle this if producer/talent-->
-                            </div>
-                        </div>
-                    </div>
-                    <svg
-                            class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                        <path
-                                fill-rule="evenodd"
-                                d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-                <!-- Dropdown menu -->
-                <div
-                        id="dropdownUserName"
-                        class="hidden z-10 w-48 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        data-popper-placement="bottom">
-                    <a
-                            href="#"
-                            class="flex items-center py-3 px-4 rounded hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <div class="text-left">
-                            <div
-                                    class="font-semibold leading-none text-gray-900 dark:text-white mb-0.5 text-sm">
-                                Company
-                            </div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400">
-                                Created August, 2014
-                            </div>
-                        </div>
-                    </a>
-                    <a
-                            href="#"
-                            class="flex items-center py-3 px-4 rounded hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <div class="text-left">
-                            <div
-                                    class="font-semibold leading-none text-gray-900 dark:text-white mb-0.5 text-sm">
-                                Personal
-                            </div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400">
-                                Created September, 2018
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <svg
-                        class="w-6 h-6 text-gray-500 dark:text-gray-400"
-                        aria-hidden="true"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                    <path
-                            fill-rule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clip-rule="evenodd"></path>
-                </svg>
-
-                <div
-                        id="regionDropdown"
-                        class="hidden z-30 w-60 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                    <ul
-                            class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="regionDropdownButton">
-                        <li>
-                            <div
-                                    class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                <div class="flex items-center h-5">
-                                    <input
-                                            id="helper-radio-4"
-                                            name="helper-radio"
-                                            type="radio"
-                                            value=""
-                                            class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                                    />
-                                </div>
-                                <div class="ml-2 text-sm">
-                                    <label
-                                            for="helper-radio-4"
-                                            class="font-medium text-gray-900 dark:text-gray-300">
-                                        <div>themesberg.com</div>
-                                        <p
-                                                id="helper-radio-text-4"
-                                                class="text-xs font-normal text-gray-500 dark:text-gray-300">
-                                            Free templates and themes
-                                        </p>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div
-                                    class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                <div class="flex items-center h-5">
-                                    <input
-                                            id="helper-radio-5"
-                                            name="helper-radio"
-                                            type="radio"
-                                            value=""
-                                            class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                                    />
-                                </div>
-                                <div class="ml-2 text-sm">
-                                    <label
-                                            for="helper-radio-5"
-                                            class="font-medium text-gray-900 dark:text-gray-300">
-                                        <div>iconscale.com</div>
-                                        <p
-                                                id="helper-radio-text-5"
-                                                class="text-xs font-normal text-gray-500 dark:text-gray-300">
-                                            Open-source SVG icons
-                                        </p>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div
-                                    class="flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                <div class="flex items-center h-5">
-                                    <input
-                                            id="helper-radio-6"
-                                            name="helper-radio"
-                                            type="radio"
-                                            value=""
-                                            class="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                                    />
-                                </div>
-                                <div class="ml-2 text-sm">
-                                    <label
-                                            for="helper-radio-6"
-                                            class="font-medium text-gray-900 dark:text-gray-300">
-                                        <div>ui.glass</div>
-                                        <p
-                                                id="helper-radio-text-6"
-                                                class="text-xs font-normal text-gray-500 dark:text-gray-300">
-                                            Glassmorphism UI framework
-                                        </p>
-                                    </label>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div
-                    class="grid grid-cols-2 gap-2 w-full md:items-center md:flex md:w-auto">
-
-                <button
-                        id="moreOptionsDropdownButton"
-                        type="button"
-                        data-dropdown-toggle="moreOptionsDropdown"
-                        class="py-2.5 px-4 justify-center text-xs font-medium text-primary-700 dark:text-primary-500 bg-gray-50 rounded-lg dark:bg-gray-700 hover:bg-primary-700 hover:text-white dark:hover:text-white dark:border-primary-500 focus:ring-4 focus:ring-primary-300 border border-primary-700 dark:hover:bg-primary-700 dark:hover:border-primary-700 focus:outline-none dark:focus:ring-primary-800 inline-flex items-center">
-                    More
-                    <svg
-                            class="ml-1.5 w-3.5 h-3.5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                        <path
-                                fill-rule="evenodd"
-                                d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-                <div
-                        class="hidden z-50 my-4 w-48 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        id="moreOptionsDropdown">
-                    <ul
-                            class="py-1 text-gray-700 dark:text-gray-300"
-                            aria-labelledby="moreOptionsDropdownButton">
-                        <li>
-                            <a
-                                    href="#"
-                                    class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
-                                <svg
-                                        class="mr-2 w-5 h-5 text-gray-500 dark:text-gray-300"
-                                        aria-hidden="true"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                            fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                                            clip-rule="evenodd"></path>
-                                </svg>
-                                Create new app</a>
-                        </li>
-                        <li>
-                            <a
-                                    href="#"
-                                    class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
-                                <svg
-                                        class="mr-2 w-5 h-5 text-gray-500 dark:text-gray-300"
-                                        aria-hidden="true"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                                </svg>
-                                Inbox</a>
-                        </li>
-                        <li>
-                            <a
-                                    href="#"
-                                    class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
-                                <svg
-                                        class="mr-2 w-5 h-5 text-gray-500 dark:text-gray-300"
-                                        aria-hidden="true"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                            fill-rule="evenodd"
-                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                            clip-rule="evenodd"></path>
-                                </svg>
-                                App info</a>
-                        </li>
-                        <li>
-                            <a
-                                    href="#"
-                                    class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
-                                <svg class="mr-2 w-5 h-5 text-gray-500 dark:text-gray-300"
-                                     aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                            d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
-                                    <path
-                                            fill-rule="evenodd"
-                                            d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                            clip-rule="evenodd"></path>
-                                </svg>
-                                Edit app
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </nav>
@@ -829,8 +519,22 @@
                                 href="#"
                                 class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600">Events</a>
                     </li>
+                    {% if request.user.is_producer  and request.user.is_verified_as_producer %}
+                        <li
+                                class="block border-b dark:border-gray-700 lg:inline lg:border-b-0">
+                            <a
+                                    href="#"
+                                    class="block py-3 px-4 text-gray-500 dark:text-gray-400 hover:text-primary-600 border-b-2 border-white dark:border-gray-900 dark:hover:text-primary-500 dark:hover:border-primary-500 hover:border-primary-600">Producer
+                                Studio</a>
+                        </li>
+                    {% endif %}
+
                 </ul>
             </div>
         </div>
     </nav>
 </header>
+
+<script>
+
+</script>
