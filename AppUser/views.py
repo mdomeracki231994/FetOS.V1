@@ -9,7 +9,12 @@ def register_user(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         password2 = request.POST.get('confirm-password')
-        user_type = request.POST.get('user_type')
+        modal_signup = request.POST.get('modal_signup')
+        if modal_signup:
+            modal_signup = True
+        producer_signup = request.POST.get('producer_signup')
+        if producer_signup:
+            producer_signup = True
 
         if password != password2:
             print("Passwords do not match")
@@ -17,14 +22,13 @@ def register_user(request):
         get_user_model().objects.create_user(
             email=email,
             password=password,
-            user_type=user_type,
             is_active=True,
+            is_talent=modal_signup,
+            is_producer=producer_signup
         )
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-            if user.user_type == "Producer":
-                return redirect('create_producer')
             return redirect('home')
 
     return render(request, 'Auth/Register.html')

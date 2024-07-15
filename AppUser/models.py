@@ -12,9 +12,12 @@ class AppUserManager(BaseUserManager):
             first_name=None,
             last_name=None,
             date_of_birth=None,
+            is_talent=False,
+            is_producer=False,
+            is_verified_as_talent=False,
+            is_verified_as_producer=False,
             sex=None,
             user_bio=None,
-            user_type=None,
             is_active=False,
     ):
         if not email:
@@ -27,9 +30,12 @@ class AppUserManager(BaseUserManager):
             first_name=first_name,
             last_name=last_name,
             date_of_birth=date_of_birth,
+            is_talent=is_talent,
+            is_producer=is_producer,
+            is_verified_as_talent=is_verified_as_talent,
+            is_verified_as_producer=is_verified_as_producer,
             sex=sex,
             user_bio=user_bio,
-            user_type=user_type,
             is_active=is_active,
         )
         user.set_password(password)
@@ -65,11 +71,11 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     sex = models.CharField(max_length=20, choices=SEX_CHOICES, null=True, blank=True)
     phone_number = models.CharField(max_length=55, null=True, blank=True)
     user_bio = models.TextField(null=True, blank=True)
-    is_talent = models.BooleanField(default=False)
-    is_producer = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
-    is_verified_as_talent = models.BooleanField(default=False)
-    is_verified_as_producer = models.BooleanField(default=False)
+    is_talent = models.BooleanField(default=False, null=True, blank=True)
+    is_producer = models.BooleanField(default=False, null=True, blank=True)
+    is_active = models.BooleanField(default=False, null=True, blank=True)
+    is_verified_as_talent = models.BooleanField(default=False, null=True, blank=True)
+    is_verified_as_producer = models.BooleanField(default=False, null=True, blank=True)
     date_joined = models.DateField(auto_now_add=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
