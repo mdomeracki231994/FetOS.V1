@@ -44,7 +44,6 @@ def create_producer(request):
             'Twitter': request.POST.get('twitter'),
             'TickTok': request.POST.get('ticktok'),
             'Bluesky': request.POST.get('github'),
-            'YouTube': request.POST.get('youtube'),
             'Instagram': request.POST.get('instagram'),
         }
 
