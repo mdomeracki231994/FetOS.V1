@@ -11,7 +11,7 @@ class Producer(models.Model):
 
 
 class ProducerStore(models.Model):
-    user = models.ForeignKey(Producer, on_delete=models.CASCADE)
+    producer = models.ForeignKey(Producer, on_delete=models.CASCADE)
     store_name = models.CharField(max_length=255)
     # TODO Will need to record store location.
 
