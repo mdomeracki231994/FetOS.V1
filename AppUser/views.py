@@ -29,8 +29,12 @@ def register_user(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home')
-
+        if request.user.is_talent and request.user.is_producer:
+            pass
+        elif request.user.is_talent:
+            pass
+        elif request.user.is_producer:
+            return redirect('create_producer')
     return render(request, 'Auth/Register.html')
 
 
@@ -41,6 +45,8 @@ def login_user(request):
         user = authenticate(request, email=email, password=password)
         if user:
             login(request, user=user)
+            if AppUser.first_name is None:
+                return redirect('producer_profile')
             return redirect('home')
         else:
             print('User Does not exist')  # TODO We need to flash message

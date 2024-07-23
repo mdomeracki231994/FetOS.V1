@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from AppUser.models import AppUser, UserAddress, SocialMediaAccounts
-from producer.models import Producer
+from producer.models import Producer, ProducerStore
 
 
 @login_required
@@ -14,6 +14,7 @@ def create_producer(request):
         birthday = request.POST.get('birthday')
         sex = request.POST.get('sex')
         stage_name = request.POST.get('stage-name')
+        store_name = request.POST.get('store-name')
         phone_number = request.POST.get('phone-number')
         biography = request.POST.get('biography')
         state = request.POST.get('state')
@@ -32,6 +33,9 @@ def create_producer(request):
 
         producer, created = Producer.objects.get_or_create(user=user)
         producer.stage_name = stage_name
+
+        store, created = ProducerStore.objects.get_or_create(user=user)
+        store.store_name = store_name
 
         address, created = UserAddress.objects.get_or_create(user=user)
         address.address_line_one = address_line_one
@@ -55,6 +59,7 @@ def create_producer(request):
                 )
                 social_media_account.url = url
                 social_media_account.save()
+        return redirect('producer_profile')
 
     sex = AppUser.SEX_CHOICES
     first_name = request.user.first_name
