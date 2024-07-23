@@ -7,7 +7,7 @@ class CategoriesRef(models.Model):
     title = models.CharField(max_length=255, default=None, null=True)
 
     def __str__(self):
-        return self.title
+        return f'{self.title}'
 
 
 class FetosJob(models.Model):
@@ -52,4 +52,4 @@ class FetosJob(models.Model):
     model_options = models.TextField(default=None, null=True)
 
     def __str__(self):
-        return self.title
+        return f'{self.title}'

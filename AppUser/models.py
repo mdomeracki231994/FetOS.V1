@@ -85,7 +85,7 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     objects = AppUserManager()
 
     def __str__(self):
-        return self.first_name + self.last_name + self.email
+        return f'{self.first_name} {self.last_name}  {self.email}'
 
     @property
     def age(self):
@@ -106,7 +106,7 @@ class UserAddress(models.Model):
     zip = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
-        return self.user
+        return f'{self.user}'
 
 
 class SocialMediaAccounts(models.Model):
@@ -115,4 +115,4 @@ class SocialMediaAccounts(models.Model):
     url = models.URLField(unique=True, null=True, blank=True)
 
     def __str__(self):
-        return self.user
+        return f'self.user'
