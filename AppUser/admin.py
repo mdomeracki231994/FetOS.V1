@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from AppUser.models import AppUser, UserAddress, SocialMediaAccounts
+
+admin.site.register(AppUser)
+admin.site.register(UserAddress)
+admin.site.register(SocialMediaAccounts)

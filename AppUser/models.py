@@ -83,6 +83,9 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 
     objects = AppUserManager()
 
+    def __str__(self):
+        return self.first_name + self.last_name + self.email
+
     @property
     def age(self):
         if self.date_of_birth is None:
@@ -101,8 +104,14 @@ class UserAddress(models.Model):
     state = models.CharField(max_length=255, null=True, blank=True)
     zip = models.CharField(max_length=50, null=True, blank=True)
 
+    def __str__(self):
+        return self.user
+
 
 class SocialMediaAccounts(models.Model):
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
     account_title = models.CharField(max_length=100, null=True, blank=True)
     url = models.URLField(unique=True, null=True, blank=True)
+
+    def __str__(self):
+        return self.user

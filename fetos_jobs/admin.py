@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from fetos_jobs.models import CategoriesRef, FetosJob
+
+admin.site.register(CategoriesRef)
+admin.site.register(FetosJob)

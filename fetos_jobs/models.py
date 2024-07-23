@@ -6,6 +6,9 @@ from AppUser.models import AppUser
 class CategoriesRef(models.Model):
     title = models.CharField(max_length=255, default=None, null=True)
 
+    def __str__(self):
+        return self.title
+
 
 class FetosJob(models.Model):
     LEVEL_OF_NUDITY = (
@@ -47,3 +50,6 @@ class FetosJob(models.Model):
     is_public = models.BooleanField(default=False)
     job_description = models.TextField(default=None, null=True)
     model_options = models.TextField(default=None, null=True)
+
+    def __str__(self):
+        return self.title

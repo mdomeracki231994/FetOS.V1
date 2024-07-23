@@ -9,9 +9,14 @@ class Producer(models.Model):
     is_pro = models.BooleanField(default=False)
     is_hiring = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.user
+
 
 class ProducerStore(models.Model):
     producer = models.ForeignKey(Producer, on_delete=models.CASCADE)
     store_name = models.CharField(max_length=255)
-    # TODO Will need to record store location.
 
+    # TODO Will need to record store location.
+    def __str__(self):
+        return self.producer + self.store_name
