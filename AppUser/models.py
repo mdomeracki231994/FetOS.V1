@@ -75,6 +75,7 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     is_talent = models.BooleanField(default=False, null=True, blank=True)
     is_producer = models.BooleanField(default=False, null=True, blank=True)
     is_active = models.BooleanField(default=False, null=True, blank=True)
+    is_staff = models.BooleanField(default=False)
     is_verified_as_talent = models.BooleanField(default=False, null=True, blank=True)
     is_verified_as_producer = models.BooleanField(default=False, null=True, blank=True)
     date_joined = models.DateField(auto_now_add=True)
