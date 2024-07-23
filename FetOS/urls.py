@@ -25,4 +25,5 @@ urlpatterns = [
     path('producer/', include('producer.urls')),
     path('jobs/', include('fetos_jobs.urls')),
     path('talent/', include('Talent.urls')),
+    path('events/', include('fetos_events.urls')),
 ]

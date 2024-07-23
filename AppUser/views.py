@@ -29,7 +29,9 @@ def register_user(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-        if request.user.is_talent and request.user.is_producer:
+        if request.user.is_superuser:
+            return redirect('dashboard')
+        elif request.user.is_talent and request.user.is_producer:
             pass
         elif request.user.is_talent:
             pass

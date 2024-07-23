@@ -70,6 +70,10 @@ def create_producer(request):
     return render(request, 'Producer/CreateProducer.html', context)
 
 
+def producer_dashboard_page(request):
+    return render(request, 'Producer/producer_dashboard.html')
+
+
 @login_required
 def producer_profile_page(request):
     user = request.user

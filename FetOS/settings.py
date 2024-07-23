@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'producer',
     'fetos_jobs',
     'Talent',
+    'fetos_events',
 ]
 
 MIDDLEWARE = [
