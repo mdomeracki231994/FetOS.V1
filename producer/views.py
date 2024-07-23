@@ -34,7 +34,7 @@ def create_producer(request):
         producer, created = Producer.objects.get_or_create(user=user)
         producer.stage_name = stage_name
 
-        store, created = ProducerStore.objects.get_or_create(user=user)
+        store, created = ProducerStore.objects.get_or_create(producer=producer)
         store.store_name = store_name
 
         address, created = UserAddress.objects.get_or_create(user=user)
