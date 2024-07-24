@@ -8,7 +8,7 @@ from fetos_jobs.models import CategoriesRef, FetosJob
 def create_job(request):
     if request.user.is_anonymous:
         return redirect("login")
-    if request.user.user_type == "Producer":
+    if request.user.is_producer:
         if request.method == "POST":
             job_title = request.POST.get('job_title')
             job_date_time = request.POST.get('job_date_time')
@@ -59,4 +59,8 @@ def create_success(request):
 
 
 def all_jobs(request):
-    return render(request, 'fetos_jobs/all_jobs.html')
+    all_current_fet_os_jobs = FetosJob.objects.all()
+    context = {
+        'all_current_fet_os_jobs': all_current_fet_os_jobs,
+    }
+    return render(request, 'fetos_jobs/all_jobs.html', context)
