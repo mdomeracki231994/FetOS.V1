@@ -17,7 +17,7 @@
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>u9ccr3apvnek6n:p69124786ad633747c434e35bbdbb72a964ae0360800f57414e63b2760048db9f@c5flugvup2318r.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d4e551h5md6iqs</jdbc-url>
+      <jdbc-url>jdbc:postgresql://c5flugvup2318r.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com :5432 /d4e551h5md6iqs</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

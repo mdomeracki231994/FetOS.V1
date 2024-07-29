@@ -358,8 +358,16 @@
                             class="py-1 text-gray-700 dark:text-gray-300"
                             aria-labelledby="dropdown"
                     >
-                        {% if request.user.is_talent and request.user.is_verified_as_talent %}
-                            <!-- FIXME need to check what kind of user it is and redirect them to the correct page.-->
+                        {% if  request.user.is_talent and request.user.is_verified_as_talent and request.user.is_producer and request.user.is_verified_as_producer %}
+                            <li>
+                                <a
+                                        href="{% url 'update_producer' %}"
+                                        class="block
+                                         py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                                >My profile</a
+                                >
+                            </li>
+                        {% elif request.user.is_talent and request.user.is_verified_as_talent %}
                             <li>
                                 <a
                                         href="{% url 'update_talent' %}"
@@ -368,7 +376,17 @@
                                 >My profile</a
                                 >
                             </li>
+                        {% elif request.user.is_producer and request.user.is_verified_as_producer %}
+                            <li>
+                                <a
+                                        href="{% url 'update_producer' %}"
+                                        class="block
+                                         py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                                >My profile</a
+                                >
+                            </li>
                         {% endif %}
+
                         <li>
                             <a
                                     href="{% url 'update_talent' %}"

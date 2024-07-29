@@ -17,7 +17,6 @@ class AppUserManager(BaseUserManager):
             is_verified_as_talent=False,
             is_verified_as_producer=False,
             sex=None,
-            user_bio=None,
             is_active=False,
     ):
         if not email:
@@ -35,7 +34,6 @@ class AppUserManager(BaseUserManager):
             is_verified_as_talent=is_verified_as_talent,
             is_verified_as_producer=is_verified_as_producer,
             sex=sex,
-            user_bio=user_bio,
             is_active=is_active,
         )
         user.set_password(password)
@@ -71,7 +69,6 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     date_of_birth = models.DateField(null=True, blank=True)
     sex = models.CharField(max_length=20, choices=SEX_CHOICES, null=True, blank=True)
     phone_number = models.CharField(max_length=55, null=True, blank=True)
-    user_bio = models.TextField(null=True, blank=True)
     is_talent = models.BooleanField(default=False, null=True, blank=True)
     is_producer = models.BooleanField(default=False, null=True, blank=True)
     is_active = models.BooleanField(default=False, null=True, blank=True)

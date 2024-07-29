@@ -70,6 +70,30 @@ def create_producer(request):
     return render(request, 'Producer/CreateProducer.html', context)
 
 
+def update_producer(request):
+    user = request.user
+    producer = get_object_or_404(Producer, user=user)
+    if request.method == "POST":
+        stage_name = request.POST.get('stage_name')
+        producer_bio = request.POST.get('producer_bio')
+        is_hiring = request.POST.get('is_hiring')
+
+        producer.stage_name = stage_name
+        if is_hiring:
+            producer.is_hiring = True
+        else:
+            producer.is_hiring = False
+        producer.producer_bio = producer_bio
+        producer.save()
+
+    context = {
+        'producer_bio': producer.producer_bio if producer.producer_bio else "No Bio Provided",
+        'stage_name': producer.stage_name,
+        'is_hiring': producer.is_hiring,
+    }
+    return render(request, 'Producer/update_producer.html', context)
+
+
 def producer_dashboard_page(request):
     return render(request, 'Producer/producer_dashboard.html')
 

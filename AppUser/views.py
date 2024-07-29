@@ -9,12 +9,16 @@ def register_user(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         password2 = request.POST.get('confirm-password')
-        modal_signup = request.POST.get('modal_signup')
-        if modal_signup:
-            modal_signup = True
-        producer_signup = request.POST.get('producer_signup')
-        if producer_signup:
-            producer_signup = True
+        user_type = request.POST.get('user_type')
+        is_talent = False
+        is_producer = False
+        if user_type == 'talent':
+            is_talent = True
+        elif user_type == 'producer':
+            is_producer = True
+        elif user_type == 'talent_and_producer':
+            is_talent = True
+            is_producer = True
 
         if password != password2:
             print("Passwords do not match")
@@ -23,8 +27,8 @@ def register_user(request):
             email=email,
             password=password,
             is_active=True,
-            is_talent=modal_signup,
-            is_producer=producer_signup
+            is_talent=is_talent,
+            is_producer=is_producer
         )
         user = authenticate(request, email=email, password=password)
         if user is not None:
@@ -32,9 +36,9 @@ def register_user(request):
         if request.user.is_superuser:
             return redirect('dashboard')
         elif request.user.is_talent and request.user.is_producer:
-            pass
+            return redirect('create_producer')
         elif request.user.is_talent:
-            pass
+            return redirect('create_talent')
         elif request.user.is_producer:
             return redirect('create_producer')
     return render(request, 'Auth/Register.html')
