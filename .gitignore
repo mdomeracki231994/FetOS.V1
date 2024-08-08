@@ -145,3 +145,6 @@ dmypy.json
 
 # dotenv
 .env
+
+
+credentials.json
