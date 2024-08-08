@@ -7,17 +7,28 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h2 class="text-2xl font-bold mb-4">Create Jobs</h2>
-                    <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
+                    <a href="{% url 'create_job' %}"
+                       class="bg-blue-500 text-white font-bold py-2 px-4 pb-2.5 rounded hover:bg-blue-700">
                         Create Job
-                    </button>
+                    </a>
+                    <div class="flex flex-col justify-center p-6 border border-t ">
+                        <h1 class="">My Open Jobs</h1>
+                        {% for job in jobs %}
+                            <div class="bg-white p-4 rounded-lg shadow-md mb-4 border">
+                                <h3 class="text-xl font-bold mb-2">{{ job.title }}</h3>
+                                <p class="text-gray-700 mb-4">Job Description: {{ job.description }}</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Location: {{ job.location }}</span>
+                                    <a class="text-blue-500 hover:text-blue-700">View
+                                        Details</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h2 class="text-2xl font-bold mb-4">Upcoming Jobs</h2>
-                    <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-                    <!-- Calendar -->
-                    <div class="mt-4">
-                        <iframe src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&ctz=America%2FNew_York" style="border: 0" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
-                    </div>
+                    {% include 'fet_os_calendar/my_calendar.html' %}
                 </div>
             </div>
         </div>

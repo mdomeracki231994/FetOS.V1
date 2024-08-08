@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from fetos_events.models import Events
+
+admin.site.register(Events)

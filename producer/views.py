@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
 from AppUser.models import AppUser, UserAddress, SocialMediaAccounts
+from fetos_jobs.models import FetosJob
 from producer.models import Producer, ProducerStore
 
 
@@ -95,7 +96,11 @@ def update_producer(request):
 
 
 def producer_dashboard_page(request):
-    return render(request, 'Producer/producer_dashboard.html')
+    jobs = FetosJob.objects.all()
+    context = {
+        'jobs': jobs,
+    }
+    return render(request, 'Producer/producer_dashboard.html', context)
 
 
 @login_required
