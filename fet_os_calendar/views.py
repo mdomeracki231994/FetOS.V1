@@ -12,4 +12,8 @@ def calendar_page(request):
         'fet_os_events': fet_os_events,
         'fet_os_jobs': fet_os_jobs,
     }
-    return render(request, 'fet_os_calendar/my_calendar.html', context)
+    return render(
+        request,
+        'fet_os_calendar/my_calendar.html',
+        context,
+    )

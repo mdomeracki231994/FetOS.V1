@@ -53,3 +53,8 @@ class FetosJob(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+
+class AppliedToJob(models.Model):
+    job = models.ForeignKey(FetosJob, on_delete=models.CASCADE)
+    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)

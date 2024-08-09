@@ -1,7 +1,12 @@
+import os.path
+
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
+from FetOS.settings import BASE_DIR
 from fetos_jobs.models import CategoriesRef, FetosJob
 
 
@@ -64,3 +69,16 @@ def all_jobs(request):
         'all_current_fet_os_jobs': all_current_fet_os_jobs,
     }
     return render(request, 'fetos_jobs/all_jobs.html', context)
+
+
+def download_2257_form(request):
+    relative_path = 'static/Forms/2257.docx'
+    file_path = os.path.join(settings.STATIC_ROOT, relative_path)
+
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as file:
+            response = HttpResponse(file.read(), content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="2257_Form.pdf"'
+            return response
+    else:
+        raise Http404("File does not exist")
