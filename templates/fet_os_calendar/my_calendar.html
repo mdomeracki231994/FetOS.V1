@@ -1,31 +1,43 @@
 {% extends 'auth_base.html' %}
 
 {% block content %}
+    <div class=" pl-3 w-3/4 justify-center">
+        <div id='calendar'></div>
+    </div>
+
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     <script>
+        let fet_os_events_and_jobs = [];
 
-        let fet_os_events = [
-            {% for event in fet_os_events %}
-                {
-                    id: {{ event.id }},
-                    title: '{{ event.title }}',
-                    start: '{{ event.event_date_time }}'
-                }
-                {% if not forloop.last %},{% endif %}
-            {% endfor %}
-        ];
-        console.log(fet_os_events)
+        {% for event in fet_os_events %}
+            fet_os_events_and_jobs.push({
+                id: '{{ event.id }}',
+                title: '{{ event.title }}',
+                start: '{{ event.event_date_time|date:"Y-m-d\\TH:i:s" }}',
+                is_event: true,
+            });
+        {% endfor %}
+
+        {% for job in fet_os_jobs %}
+            fet_os_events_and_jobs.push({
+                id: '{{ job.id }}',
+                title: '{{ job.title }}',
+                start: '{{ job.job_date_time|date:"Y-m-d\\TH:i:s"}}',
+                is_job: true,
+            })
+        {% endfor %}
+
         document.addEventListener('DOMContentLoaded', function () {
             let calendarEl = document.getElementById('calendar');
-
             let calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
-                events: fet_os_events
+                events: fet_os_events_and_jobs,
             });
             calendar.render();
         });
 
+
+
     </script>
-    <div id='calendar'></div>
 
 {% endblock %}
